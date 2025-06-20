@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,34 +7,73 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <header>
+  <nav>
+    <ul>
+      <li><a href="#about">Giới thiệu</a></li>
+      <li><a href="#projects">Dự án</a></li>
+      <li><a href="#contact">Liên hệ</a></li>
+    </ul>
+  </nav>
+
+  <header id="about">
     <h1>Xin chào, tôi là Hoàng Mao Cẩu 👋</h1>
-    <p>Đây là trang cá nhân giới thiệu các dự án và sản phẩm tôi chém gió là mình đã thực hiện.</p>
+    <p>Đây là trang cá nhân giới thiệu các dự án và sản phẩm tôi chém gió là tôi đã thực hiện.</p>
   </header>
 
-  <section class="projects">
+  <section id="projects" class="projects">
     <h2>Dự án nổi bật</h2>
     <div class="project-list">
       <div class="project-item">
         <img src="assets/project1.jpg" alt="Dự án 1"/>
-        <h3>Tên dự án 1</h3>
-        <p>Mô tả ngắn gọn về dự án, công nghệ sử dụng hoặc giá trị mang lại.</p>
+        <h3>Project Dawn</h3>
+        <p>Đây là dự án pha cà phê lúc chuẩn bị kết thúc giờ hành chính, dự án này đánh thức các giác quan và khơi dậy tiềm năng để làm thêm 1hr</p>
       </div>
       <div class="project-item">
         <img src="assets/project2.jpg" alt="Dự án 2"/>
-        <h3>Tên dự án 2</h3>
-        <p>Mô tả ngắn gọn về dự án, công nghệ sử dụng hoặc giá trị mang lại.</p>
+        <h3>Project Afterdinner</h3>
+        <p>Dự án pha cà pê để ún sau khi zửa 8</p>
       </div>
     </div>
   </section>
 
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Liên hệ</h2>
-    <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+    <p>Email: <a href="mailto:haxphan@nomail.com">hapx@hmail.com</a></p>
   </section>
 
   <footer>
     <p>© 2025 hapx. All rights reserved.</p>
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll("header, section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      sections.forEach((section) => {
+        section.classList.remove("active-section");
+      });
+      if (current) {
+        document.getElementById(current).classList.add("active-section");
+      }
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
